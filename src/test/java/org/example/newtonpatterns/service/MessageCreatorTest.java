@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(classes = MessageCreator.class)
 class MessageCreatorTest {
     @Autowired
@@ -19,25 +18,25 @@ class MessageCreatorTest {
 
     @Test
     void createMsg1() {
-        Mockito.when(templateCreator.createTemplateByCode("1")).thenReturn("HAPPY BIRTHDAY TEMPLATE");
+        Mockito.when(templateCreator.getTemplateByCode("1")).thenReturn("HAPPY BIRTHDAY TEMPLATE");
         ApplicationMessage msg = messageCreator.createMsg("1", "IVAN IVANOV");
         Assertions.assertTrue(msg.getBody().startsWith("HAPPY BIRTHDAY"));
     }
     @Test
     void createMsg2() {
-        Mockito.when(templateCreator.createTemplateByCode("2")).thenReturn("WELCOME TEMPLATE");
+        Mockito.when(templateCreator.getTemplateByCode("2")).thenReturn("WELCOME TEMPLATE");
         ApplicationMessage msg = messageCreator.createMsg("2", "IVAN IVANOV");
         Assertions.assertTrue(msg.getBody().startsWith("WELCOME TEMPLATE"));
     }
     @Test
     void createMsg3() {
-        Mockito.when(templateCreator.createTemplateByCode("3")).thenReturn("INFORMATION TEMPLATE");
+        Mockito.when(templateCreator.getTemplateByCode("3")).thenReturn("INFORMATION TEMPLATE");
         ApplicationMessage msg = messageCreator.createMsg("3", "IVAN IVANOV");
         Assertions.assertTrue(msg.getBody().startsWith("INFORMATION TEMPLATE"));
     }
     @Test
     void createMsg4() {
-        Mockito.when(templateCreator.createTemplateByCode("4")).thenReturn("");
+        Mockito.when(templateCreator.getTemplateByCode("4")).thenReturn("");
         ApplicationMessage msg = messageCreator.createMsg("4", "IVAN IVANOV");
         Assertions.assertFalse(msg.getBody().startsWith("INFORMATION TEMPLATE"));
     }

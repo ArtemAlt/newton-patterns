@@ -15,6 +15,6 @@ public class MessageCreator {
     }
 
     public ApplicationMessage createMsg(String code, String text) {
-        return new ApplicationMessage(String.format("%s --- %s", templateCreator.createTemplateByCode(code), text));
+        return new ApplicationMessage(String.format("%s --- %s", templateCreator.getTemplateByCode(code), text));
     }
 }
