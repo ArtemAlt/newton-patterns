@@ -3,19 +3,11 @@ package org.example.newtonpatterns.service.util;
 public class MessageTemplateCreator {
 
     public String createTemplateByCode(String code) {
-        String result = "";
-        if("1".equals(code)) {
-            result = "HAPPY BIRTHDAY TEMPLATE";
-        }
-
-        if("2".equals(code)) {
-            result = "WELCOME TEMPLATE";
-        }
-
-        if("3".equals(code)) {
-            result = "INFORMATION TEMPLATE";
-        }
-
-        return result;
+        return switch (code) {
+            case "1" -> "HAPPY BIRTHDAY";
+            case "2" -> "WELCOME TEMPLATE";
+            case "3" -> "INFORMATION TEMPLATE";
+            default -> "";
+        };
     }
 }
