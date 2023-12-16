@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 public class MessageCreator {
     private final MessageTemplateCreator templateCreator;
 
-    public MessageCreator(MessageTemplateCreator template) {
-        this.templateCreator = template;
+    public MessageCreator() {
+        this.templateCreator = new MessageTemplateCreator();
     }
 
     public ApplicationMessage createMsg(String code, String text) {
