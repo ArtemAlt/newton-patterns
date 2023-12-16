@@ -1,23 +1,19 @@
 package org.example.newtonpatterns.service.util;
 
 import org.example.newtonpatterns.service.componets.MessageTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Service
 public class MessageTemplateCreator {
-    private final Map<String, MessageTemplate> map;
+    private final Map<String, MessageTemplate> map = new HashMap<>();
 
-    @Autowired
-    public MessageTemplateCreator(List<MessageTemplate> list) {
-        this.map = list.stream()
-                .collect(Collectors.toMap(MessageTemplate::currentCode, Function.identity()));
+    public void registry(MessageTemplate template) {
+        map.put(template.currentCode(), template);
     }
+
 
 
     public String getTemplateByCode(String code) {
