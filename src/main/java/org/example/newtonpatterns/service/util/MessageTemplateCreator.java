@@ -1,24 +1,27 @@
 package org.example.newtonpatterns.service.util;
 
+import org.example.newtonpatterns.service.componets.MessageTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class MessageTemplateCreator {
+    private final Map<String, MessageTemplate> map = new HashMap<>();
 
-    public String createTemplateByCode(String code) {
-        String result = "";
-        if("1".equals(code)) {
-            result = "HAPPY BIRTHDAY TEMPLATE";
+    public void registry(MessageTemplate template) {
+        map.put(template.currentCode(), template);
+    }
+
+
+
+    public String getTemplateByCode(String code) {
+        MessageTemplate template = map.get(code);
+        if (template == null) {
+            throw new UnsupportedOperationException(code + " not supported");
         }
-
-        if("2".equals(code)) {
-            result = "WELCOME TEMPLATE";
-        }
-
-        if("3".equals(code)) {
-            result = "INFORMATION TEMPLATE";
-        }
-
-        return result;
+        return template.getTemplate();
     }
 }
+
