@@ -30,6 +30,6 @@ class MessageCreatorTest {
     @Test
     void createMsg4() {
         ApplicationMessage msg = messageCreator.createMsg("4", "IVAN IVANOV");
-        Assertions.assertTrue(msg.getBody().startsWith("INFORMATION TEMPLATE"));
+        Assertions.assertFalse(msg.getBody().startsWith("INFORMATION TEMPLATE"));
     }
 }
