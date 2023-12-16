@@ -1,8 +1,5 @@
 package org.example.newtonpatterns.service.util;
 
-import org.springframework.stereotype.Service;
-
-@Service
 public class MessageTemplateCreator {
 
     public String createTemplateByCode(String code) {
