@@ -1,14 +1,16 @@
 package org.example.newtonpatterns.service.util;
 
+import org.example.newtonpatterns.service.componets.MessageTemplate;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@SpringBootTest
 class MessageTemplateCreatorTest {
-    private MessageTemplateCreator creator = new MessageTemplateCreator();
+    @Autowired
+    private MessageTemplateCreator creator;
 
     @Test
     void createTemplateByCode1() {
@@ -28,7 +30,6 @@ class MessageTemplateCreatorTest {
     }
     @Test
     void createTemplateByCode4() {
-        String template = creator.createTemplateByCode("4");
-        Assertions.assertFalse(template.startsWith("HAPPY BIRTHDAY"));
+        Assertions.assertThrows(UnsupportedOperationException.class, () ->creator.createTemplateByCode("4"));
     }
 }
