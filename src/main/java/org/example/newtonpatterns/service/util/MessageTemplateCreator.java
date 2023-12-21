@@ -11,9 +11,13 @@ public class MessageTemplateCreator {
     private final Map<String, MessageTemplate> map = new HashMap<>();
 
     public void registry(MessageTemplate template) {
-        map.put(template.currentCode(), template);
+        String code = template.currentCode();
+        if(!map.containsKey(code)) {
+            map.put(code, template);
+        } else {
+            throw  new RuntimeException("Duplicates MessageTemplate code " + code);
+        }
     }
-
 
 
     public String getTemplateByCode(String code) {
